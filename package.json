@@ -1,0 +1,14 @@
+{
+  "name": "wetube_practice-2",
+  "version": "1.0.0",
+  "description": "Cloning Youtube",
+  "main": "index.js",
+  "author": "JohnC",
+  "license": "ISC",
+  "scripts": {
+    
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
