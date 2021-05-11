@@ -1,8 +1,15 @@
-import express from "express";
+import dotenv from "dotenv";
+import "./db";
 import app from "./app";
 
-const port = 4000;
+dotenv.config();
+
+import "./models/Video";
+import "./models/Comment";
+import "./models/User";
+
+const port = process.env.PORT || 4000;
 
 app.listen(port, () => {
-  console.log(`✅listening on: http://localhost:${port}`);
+  console.log(`✅ Listening on: http://localhost:${port}`);
 });
