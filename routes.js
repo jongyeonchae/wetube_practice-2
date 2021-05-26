@@ -9,12 +9,17 @@ const USER_DETAIL = "/:id";
 const EDIT_PROFILE = "edit-profile";
 
 const CHANGE_PASSWORD = "/change-password";
+const ME = "/me";
 
 const VIDEOS = "/videos";
 const UPLOAD = "/upload";
 const VIDEO_DETAIL = "/:id";
 const EDIT_VIDEO = "/:id/edit";
 const DELETE_VIDEO = "/:id/delete";
+
+const API = "/api";
+const REGISTER_VIEW = "/:id/view";
+const ADD_COMMENT = "/:id/comment";
 
 const routes = {
   home: HOME,
@@ -56,5 +61,9 @@ const routes = {
       return DELETE_VIDEO;
     }
   },
+  me: ME,
+  api: API,
+  registerView: REGISTER_VIEW,
+  addComment: ADD_COMMENT,
 };
 export default routes;

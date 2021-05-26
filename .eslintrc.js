@@ -11,5 +11,7 @@ module.exports = {
   rules: {
     "no-console": "off",
     "prefer-arrow-callback": "off",
+    "no-else-return": "off",
+    "import/prefer-default-export": "off",
   },
 };

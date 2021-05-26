@@ -4,9 +4,37 @@ import User from "../models/User";
 
 export const users = (req, res) => res.render(`users`, { pageTitle: `Users` });
 
-export const userDetail = (req, res) => res.render(`userDetail`, { pageTitle: `User Detail` });
+export const userDetail = async (req, res) => {
+  const {
+    params: { id },
+  } = req;
+  try {
+    const user = await User.findById(id).populate("videos");
+    console.log(user);
+    res.render(`userDetail`, { pageTitle: `User Detail`, user });
+  } catch (err) {
+    console.log(err);
+    res.redirect(routes.home);
+  }
+};
 
-export const editProfile = (req, res) => res.render(`editProfile`, { pageTitle: `Edit Profile` });
+export const getMe = (req, res) => {
+  res.render(`userDetail`, { pageTitle: `User Detail`, user: req.user });
+};
+
+export const getEditProfile = (req, res) => res.render(`editProfile`, { pageTitle: `Edit Profile` });
+
+export const postEditProfile = async (req, res) => {
+  const {
+    body: { name, email },
+  } = req;
+  try {
+    await User.findByIdAndUpdate(req.user.id, { name, email });
+    res.redirect(routes.me);
+  } catch (err) {
+    res.render(`editProfile`, { pageTitle: `Edit Profile` });
+  }
+};
 
 export const changePassword = (req, res) => res.render(`changePassword`, { pageTitle: `Change Password` });
 
@@ -35,15 +63,12 @@ export const postJoin = async (req, res, next) => {
 
 export const getLogin = (req, res) => res.render(`login`, { pageTitle: `Log In` });
 
-// export const postLogin = passport.authenticate("local", {
-//   failureRedirect: routes.login,
-//   successRedirect: routes.home,
-// });
 export const postLogin = passport.authenticate("local", {
   successRedirect: routes.home,
   failureRedirect: routes.login,
 });
 
 export const logout = (req, res) => {
+  req.logout();
   res.redirect(routes.home);
 };

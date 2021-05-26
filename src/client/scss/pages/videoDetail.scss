@@ -10,6 +10,11 @@
       width: 100px;
       margin-bottom: 25px;
     }
+    .video__author {
+      a {
+        color: #3498db;
+      }
+    }
     .video__title,
     .video__views,
     .video__descrition {
@@ -29,8 +34,16 @@
   }
   .video__comments {
     margin-top: 25px;
+    text-align: center;
     .video__comments-number {
       font-size: 18px;
+    }
+    .add__comment {
+      margin-top: 25px;
+      width: 100%;
+      input {
+        width: 100%;
+      }
     }
   }
 }
